@@ -1,0 +1,10 @@
+# Windows Systemdateien
+Thumbs.db
+desktop.ini
+
+# Office Temporäre Dateien (z.B. Excel/Word Sperrdateien)
+~
+.~lock.*
+
+# Ordner-Reste
+.DS_Store
