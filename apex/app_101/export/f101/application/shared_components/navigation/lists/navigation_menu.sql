@@ -1,0 +1,248 @@
+prompt --application/shared_components/navigation/lists/navigation_menu
+begin
+--   Manifest
+--     LIST: Navigation Menu
+--   Manifest End
+wwv_flow_imp.component_begin (
+ p_version_yyyy_mm_dd=>'2024.11.30'
+,p_release=>'24.2.0'
+,p_default_workspace_id=>5200439075611598
+,p_default_application_id=>101
+,p_default_id_offset=>10802910407445629
+,p_default_owner=>'WG'
+);
+wwv_flow_imp_shared.create_list(
+ p_id=>wwv_flow_imp.id(16408807314112693)
+,p_name=>'Navigation Menu'
+,p_list_status=>'PUBLIC'
+,p_version_scn=>357139640
+);
+wwv_flow_imp_shared.create_list_item(
+ p_id=>wwv_flow_imp.id(16420493554112804)
+,p_list_item_display_sequence=>10
+,p_list_item_link_text=>'HOME'
+,p_list_item_link_target=>'f?p=&APP_ID.:1:&SESSION.::&DEBUG.:RP:::'
+,p_list_item_icon=>'fa-home'
+,p_list_item_current_type=>'TARGET_PAGE'
+);
+wwv_flow_imp_shared.create_list_item(
+ p_id=>wwv_flow_imp.id(12616819833915575)
+,p_list_item_display_sequence=>20
+,p_list_item_link_text=>'STAMMDATEN'
+,p_list_item_link_target=>'f?p=&APP_ID.:111:&SESSION.::&DEBUG.::::'
+,p_list_item_icon=>'fa-file-text-o'
+,p_parent_list_item_id=>wwv_flow_imp.id(16420493554112804)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'111'
+);
+wwv_flow_imp_shared.create_list_item(
+ p_id=>wwv_flow_imp.id(12600947970861496)
+,p_list_item_display_sequence=>21
+,p_list_item_link_text=>'POSTLEITZAHLEN'
+,p_list_item_link_target=>'f?p=&APP_ID.:3:&SESSION.::&DEBUG.::::'
+,p_list_item_icon=>'fa-number-9-o'
+,p_parent_list_item_id=>wwv_flow_imp.id(12616819833915575)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'3'
+);
+wwv_flow_imp_shared.create_list_item(
+ p_id=>wwv_flow_imp.id(18205275945730775)
+,p_list_item_display_sequence=>22
+,p_list_item_link_text=>'ANREDE & TITEL'
+,p_list_item_link_target=>'f?p=&APP_ID.:6:&SESSION.::&DEBUG.::::'
+,p_list_item_icon=>'fa-users'
+,p_parent_list_item_id=>wwv_flow_imp.id(12616819833915575)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'6'
+);
+wwv_flow_imp_shared.create_list_item(
+ p_id=>wwv_flow_imp.id(30087165059757276)
+,p_list_item_display_sequence=>164
+,p_list_item_link_text=>'VORSTAND'
+,p_list_item_link_target=>'f?p=&APP_ID.:29:&APP_SESSION.::&DEBUG.:::'
+,p_list_item_icon=>'fa-users-alt'
+,p_parent_list_item_id=>wwv_flow_imp.id(12616819833915575)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'29'
+);
+wwv_flow_imp_shared.create_list_item(
+ p_id=>wwv_flow_imp.id(12616292926904737)
+,p_list_item_display_sequence=>30
+,p_list_item_link_text=>'GRUNDBUCH'
+,p_list_item_link_target=>'f?p=&APP_ID.:110:&SESSION.::&DEBUG.::::'
+,p_list_item_icon=>'fa-ai-sparkle-generate-document'
+,p_parent_list_item_id=>wwv_flow_imp.id(16420493554112804)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'110'
+);
+wwv_flow_imp_shared.create_list_item(
+ p_id=>wwv_flow_imp.id(12618281849971879)
+,p_list_item_display_sequence=>40
+,p_list_item_link_text=>'HOLZVERMARKTUNG'
+,p_list_item_link_target=>'f?p=&APP_ID.:112:&SESSION.::&DEBUG.::::'
+,p_list_item_icon=>'fa-tree'
+,p_parent_list_item_id=>wwv_flow_imp.id(16420493554112804)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'112'
+);
+wwv_flow_imp_shared.create_list_item(
+ p_id=>wwv_flow_imp.id(16604690685128424)
+,p_list_item_display_sequence=>41
+,p_list_item_link_text=>'HOLZPREISE'
+,p_list_item_link_target=>'f?p=&APP_ID.:2:&SESSION.::&DEBUG.::::'
+,p_list_item_icon=>'fa-euro'
+,p_parent_list_item_id=>wwv_flow_imp.id(12618281849971879)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'2'
+);
+wwv_flow_imp_shared.create_list_item(
+ p_id=>wwv_flow_imp.id(18441276420855882)
+,p_list_item_display_sequence=>42
+,p_list_item_link_text=>'HOLZWERBER'
+,p_list_item_link_target=>'f?p=&APP_ID.:8:&SESSION.::&DEBUG.::::'
+,p_list_item_icon=>'fa-male'
+,p_parent_list_item_id=>wwv_flow_imp.id(12618281849971879)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'8,9'
+);
+wwv_flow_imp_shared.create_list_item(
+ p_id=>wwv_flow_imp.id(20549510167139250)
+,p_list_item_display_sequence=>60
+,p_list_item_link_text=>'RECHNUNGEN'
+,p_list_item_link_target=>'f?p=&APP_ID.:4:&SESSION.::&DEBUG.::::'
+,p_list_item_icon=>'fa-file-text'
+,p_parent_list_item_id=>wwv_flow_imp.id(12618281849971879)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'4,5'
+);
+wwv_flow_imp_shared.create_list_item(
+ p_id=>wwv_flow_imp.id(16600684727059385)
+,p_list_item_display_sequence=>64
+,p_list_item_link_text=>'RECHNUNGEN_EXPORT'
+,p_list_item_link_target=>'f?p=&APP_ID.:11:&SESSION.::&DEBUG.::::'
+,p_list_item_icon=>'fa-file-pdf-o'
+,p_parent_list_item_id=>wwv_flow_imp.id(12618281849971879)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'11'
+);
+wwv_flow_imp_shared.create_list_item(
+ p_id=>wwv_flow_imp.id(22008087312059556)
+,p_list_item_display_sequence=>104
+,p_list_item_link_text=>'ZAHLUNGSEINGAENGE'
+,p_list_item_link_target=>'f?p=&APP_ID.:7:&APP_SESSION.::&DEBUG.:::'
+,p_list_item_icon=>'fa-arrow-down-alt'
+,p_parent_list_item_id=>wwv_flow_imp.id(12618281849971879)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'7'
+);
+wwv_flow_imp_shared.create_list_item(
+ p_id=>wwv_flow_imp.id(22408631037065284)
+,p_list_item_display_sequence=>114
+,p_list_item_link_text=>'RECHNUNG_ZAHLUNG_CHECK'
+,p_list_item_link_target=>'f?p=&APP_ID.:25:&APP_SESSION.::&DEBUG.:::'
+,p_list_item_icon=>'fa-clipboard-check'
+,p_parent_list_item_id=>wwv_flow_imp.id(12618281849971879)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'25'
+);
+wwv_flow_imp_shared.create_list_item(
+ p_id=>wwv_flow_imp.id(12619245759019332)
+,p_list_item_display_sequence=>50
+,p_list_item_link_text=>'LEISTUNGEN'
+,p_list_item_link_target=>'f?p=&APP_ID.:113:&SESSION.::&DEBUG.::::'
+,p_list_item_icon=>'fa-person-walking'
+,p_parent_list_item_id=>wwv_flow_imp.id(16420493554112804)
+,p_list_item_current_type=>'TARGET_PAGE'
+);
+wwv_flow_imp_shared.create_list_item(
+ p_id=>wwv_flow_imp.id(20404252645588841)
+,p_list_item_display_sequence=>51
+,p_list_item_link_text=>'STUNDENSAETZE'
+,p_list_item_link_target=>'f?p=&APP_ID.:12:&SESSION.::&DEBUG.::::'
+,p_list_item_icon=>'fa-badge-dollar'
+,p_parent_list_item_id=>wwv_flow_imp.id(12619245759019332)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'12'
+);
+wwv_flow_imp_shared.create_list_item(
+ p_id=>wwv_flow_imp.id(20422896103649035)
+,p_list_item_display_sequence=>52
+,p_list_item_link_text=>'ARBEITSTERMINE'
+,p_list_item_link_target=>'f?p=&APP_ID.:14:&SESSION.::&DEBUG.::::'
+,p_list_item_icon=>'fa-calendar-wrench'
+,p_parent_list_item_id=>wwv_flow_imp.id(12619245759019332)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'14'
+);
+wwv_flow_imp_shared.create_list_item(
+ p_id=>wwv_flow_imp.id(20452233613739932)
+,p_list_item_display_sequence=>53
+,p_list_item_link_text=>'EINSATZ_TEILNEHMER'
+,p_list_item_link_target=>'f?p=&APP_ID.:16:&SESSION.::&DEBUG.::::'
+,p_list_item_icon=>'fa-male'
+,p_parent_list_item_id=>wwv_flow_imp.id(12619245759019332)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'16,17'
+);
+wwv_flow_imp_shared.create_list_item(
+ p_id=>wwv_flow_imp.id(21018121637752891)
+,p_list_item_display_sequence=>54
+,p_list_item_link_text=>'ARBEITSSTUNDEN'
+,p_list_item_link_target=>'f?p=&APP_ID.:20:&SESSION.::&DEBUG.::::'
+,p_list_item_icon=>'fa-clock-o'
+,p_parent_list_item_id=>wwv_flow_imp.id(12619245759019332)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'20,21'
+);
+wwv_flow_imp_shared.create_list_item(
+ p_id=>wwv_flow_imp.id(24653280901435568)
+,p_list_item_display_sequence=>134
+,p_list_item_link_text=>'FINANZEN'
+,p_list_item_link_target=>'f?p=&APP_ID.:114:&APP_SESSION.::&DEBUG.:::'
+,p_list_item_icon=>'fa-usd'
+,p_parent_list_item_id=>wwv_flow_imp.id(16420493554112804)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'114'
+);
+wwv_flow_imp_shared.create_list_item(
+ p_id=>wwv_flow_imp.id(24652074454396031)
+,p_list_item_display_sequence=>124
+,p_list_item_link_text=>'LADE_UMSAETZE'
+,p_list_item_link_target=>'f?p=&APP_ID.:23:&SESSION.::&DEBUG.::::'
+,p_list_item_icon=>'fa-database-arrow-up'
+,p_parent_list_item_id=>wwv_flow_imp.id(24653280901435568)
+,p_list_item_current_type=>'TARGET_PAGE'
+);
+wwv_flow_imp_shared.create_list_item(
+ p_id=>wwv_flow_imp.id(24655088444558264)
+,p_list_item_display_sequence=>144
+,p_list_item_link_text=>'UMSAETZE REPORT'
+,p_list_item_link_target=>'f?p=&APP_ID.:24:&APP_SESSION.::&DEBUG.:::'
+,p_list_item_icon=>'fa-table-search'
+,p_parent_list_item_id=>wwv_flow_imp.id(24653280901435568)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'24'
+);
+wwv_flow_imp_shared.create_list_item(
+ p_id=>wwv_flow_imp.id(30047157113782923)
+,p_list_item_display_sequence=>150
+,p_list_item_link_text=>'UMSATZ BEARBEITEN'
+,p_list_item_link_target=>'f?p=&APP_ID.:26:&SESSION.::&DEBUG.::::'
+,p_list_item_icon=>'fa-pencil-square-o'
+,p_parent_list_item_id=>wwv_flow_imp.id(24653280901435568)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'26,28'
+);
+wwv_flow_imp_shared.create_list_item(
+ p_id=>wwv_flow_imp.id(28208391007511910)
+,p_list_item_display_sequence=>154
+,p_list_item_link_text=>'KASSENBUCH_EXPORT'
+,p_list_item_link_target=>'f?p=&APP_ID.:13:&SESSION.::&DEBUG.::::'
+,p_list_item_icon=>'fa-file-pdf-o'
+,p_parent_list_item_id=>wwv_flow_imp.id(24653280901435568)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'13'
+);
+wwv_flow_imp.component_end;
+end;
+/

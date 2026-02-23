@@ -1,0 +1,248 @@
+prompt --application/shared_components/data_loads/lade_umsaetze
+begin
+--   Manifest
+--     DATA LOAD: LADE_UMSAETZE
+--   Manifest End
+wwv_flow_imp.component_begin (
+ p_version_yyyy_mm_dd=>'2024.11.30'
+,p_release=>'24.2.0'
+,p_default_workspace_id=>5200439075611598
+,p_default_application_id=>101
+,p_default_id_offset=>10802910407445629
+,p_default_owner=>'WG'
+);
+wwv_flow_imp_shared.create_data_profile(
+ p_id=>wwv_flow_imp.id(24630612915356656)
+,p_name=>'LADE_UMSAETZE'
+,p_format=>'CSV'
+,p_encoding=>'utf-8'
+,p_csv_enclosed=>'"'
+,p_has_header_row=>true
+);
+wwv_flow_imp_shared.create_data_profile_col(
+ p_id=>wwv_flow_imp.id(24630947965356678)
+,p_data_profile_id=>wwv_flow_imp.id(24630612915356656)
+,p_name=>'BEZEICHNUNG_AUFTRAGSKONTO'
+,p_sequence=>1
+,p_column_type=>'DATA'
+,p_data_type=>'VARCHAR2'
+,p_max_length=>50
+,p_selector_type=>'NAME'
+,p_selector=>'BEZEICHNUNG_AUFTRAGSKONTO'
+);
+wwv_flow_imp_shared.create_data_profile_col(
+ p_id=>wwv_flow_imp.id(24631273234356679)
+,p_data_profile_id=>wwv_flow_imp.id(24630612915356656)
+,p_name=>'IBAN_AUFTRAGSKONTO'
+,p_sequence=>2
+,p_column_type=>'DATA'
+,p_data_type=>'VARCHAR2'
+,p_max_length=>50
+,p_selector_type=>'NAME'
+,p_selector=>'IBAN_AUFTRAGSKONTO'
+);
+wwv_flow_imp_shared.create_data_profile_col(
+ p_id=>wwv_flow_imp.id(24631524904356679)
+,p_data_profile_id=>wwv_flow_imp.id(24630612915356656)
+,p_name=>'BIC_AUFTRAGSKONTO'
+,p_sequence=>3
+,p_column_type=>'DATA'
+,p_data_type=>'VARCHAR2'
+,p_max_length=>50
+,p_selector_type=>'NAME'
+,p_selector=>'BIC_AUFTRAGSKONTO'
+);
+wwv_flow_imp_shared.create_data_profile_col(
+ p_id=>wwv_flow_imp.id(24631869741356679)
+,p_data_profile_id=>wwv_flow_imp.id(24630612915356656)
+,p_name=>'BANKNAME_AUFTRAGSKONTO'
+,p_sequence=>4
+,p_column_type=>'DATA'
+,p_data_type=>'VARCHAR2'
+,p_max_length=>255
+,p_selector_type=>'NAME'
+,p_selector=>'BANKNAME_AUFTRAGSKONTO'
+);
+wwv_flow_imp_shared.create_data_profile_col(
+ p_id=>wwv_flow_imp.id(24632150589356679)
+,p_data_profile_id=>wwv_flow_imp.id(24630612915356656)
+,p_name=>'BUCHUNGSTAG'
+,p_sequence=>5
+,p_column_type=>'DATA'
+,p_data_type=>'DATE'
+,p_format_mask=>'DD"."MM"."RR'
+,p_has_time_zone=>false
+,p_selector_type=>'NAME'
+,p_selector=>'BUCHUNGSTAG'
+);
+wwv_flow_imp_shared.create_data_profile_col(
+ p_id=>wwv_flow_imp.id(24632472301356679)
+,p_data_profile_id=>wwv_flow_imp.id(24630612915356656)
+,p_name=>'VALUTADATUM'
+,p_sequence=>6
+,p_column_type=>'DATA'
+,p_data_type=>'DATE'
+,p_format_mask=>'DD"."MM"."RR'
+,p_has_time_zone=>false
+,p_selector_type=>'NAME'
+,p_selector=>'VALUTADATUM'
+);
+wwv_flow_imp_shared.create_data_profile_col(
+ p_id=>wwv_flow_imp.id(24632796209356679)
+,p_data_profile_id=>wwv_flow_imp.id(24630612915356656)
+,p_name=>'NAME_ZAHLUNGSBETEILIGTER'
+,p_sequence=>7
+,p_column_type=>'DATA'
+,p_data_type=>'VARCHAR2'
+,p_max_length=>255
+,p_selector_type=>'NAME'
+,p_selector=>'NAME_ZAHLUNGSBETEILIGTER'
+);
+wwv_flow_imp_shared.create_data_profile_col(
+ p_id=>wwv_flow_imp.id(24633091618356679)
+,p_data_profile_id=>wwv_flow_imp.id(24630612915356656)
+,p_name=>'IBAN_ZAHLUNGSBETEILIGTER'
+,p_sequence=>8
+,p_column_type=>'DATA'
+,p_data_type=>'VARCHAR2'
+,p_max_length=>50
+,p_selector_type=>'NAME'
+,p_selector=>'IBAN_ZAHLUNGSBETEILIGTER'
+);
+wwv_flow_imp_shared.create_data_profile_col(
+ p_id=>wwv_flow_imp.id(24633371892356700)
+,p_data_profile_id=>wwv_flow_imp.id(24630612915356656)
+,p_name=>'BIC__SWIFT_CODE__ZAHLUNGSBETEILIGTER'
+,p_sequence=>9
+,p_column_type=>'DATA'
+,p_data_type=>'VARCHAR2'
+,p_max_length=>50
+,p_selector_type=>'NAME'
+,p_selector=>'BIC__SWIFT_CODE__ZAHLUNGSBETEILIGTER'
+);
+wwv_flow_imp_shared.create_data_profile_col(
+ p_id=>wwv_flow_imp.id(24633604120356701)
+,p_data_profile_id=>wwv_flow_imp.id(24630612915356656)
+,p_name=>'BUCHUNGSTEXT'
+,p_sequence=>10
+,p_column_type=>'DATA'
+,p_data_type=>'VARCHAR2'
+,p_max_length=>50
+,p_selector_type=>'NAME'
+,p_selector=>'BUCHUNGSTEXT'
+);
+wwv_flow_imp_shared.create_data_profile_col(
+ p_id=>wwv_flow_imp.id(24633974156356701)
+,p_data_profile_id=>wwv_flow_imp.id(24630612915356656)
+,p_name=>'VERWENDUNGSZWECK'
+,p_sequence=>11
+,p_column_type=>'DATA'
+,p_data_type=>'VARCHAR2'
+,p_max_length=>4000
+,p_selector_type=>'NAME'
+,p_selector=>'VERWENDUNGSZWECK'
+);
+wwv_flow_imp_shared.create_data_profile_col(
+ p_id=>wwv_flow_imp.id(24634201374356701)
+,p_data_profile_id=>wwv_flow_imp.id(24630612915356656)
+,p_name=>'BETRAG'
+,p_sequence=>12
+,p_column_type=>'DATA'
+,p_data_type=>'NUMBER'
+,p_decimal_char=>','
+,p_selector_type=>'NAME'
+,p_selector=>'BETRAG'
+);
+wwv_flow_imp_shared.create_data_profile_col(
+ p_id=>wwv_flow_imp.id(24634518435356701)
+,p_data_profile_id=>wwv_flow_imp.id(24630612915356656)
+,p_name=>'WAEHRUNG'
+,p_sequence=>13
+,p_column_type=>'DATA'
+,p_data_type=>'VARCHAR2'
+,p_max_length=>50
+,p_selector_type=>'NAME'
+,p_selector=>'WAEHRUNG'
+);
+wwv_flow_imp_shared.create_data_profile_col(
+ p_id=>wwv_flow_imp.id(24634879391356701)
+,p_data_profile_id=>wwv_flow_imp.id(24630612915356656)
+,p_name=>'SALDO_NACH_BUCHUNG'
+,p_sequence=>14
+,p_column_type=>'DATA'
+,p_data_type=>'NUMBER'
+,p_decimal_char=>','
+,p_selector_type=>'NAME'
+,p_selector=>'SALDO_NACH_BUCHUNG'
+);
+wwv_flow_imp_shared.create_data_profile_col(
+ p_id=>wwv_flow_imp.id(24635154481356701)
+,p_data_profile_id=>wwv_flow_imp.id(24630612915356656)
+,p_name=>'BEMERKUNG'
+,p_sequence=>15
+,p_column_type=>'DATA'
+,p_data_type=>'VARCHAR2'
+,p_max_length=>4000
+,p_selector_type=>'NAME'
+,p_selector=>'BEMERKUNG'
+);
+wwv_flow_imp_shared.create_data_profile_col(
+ p_id=>wwv_flow_imp.id(24635472974356701)
+,p_data_profile_id=>wwv_flow_imp.id(24630612915356656)
+,p_name=>'KATEGORIE'
+,p_sequence=>16
+,p_column_type=>'DATA'
+,p_data_type=>'VARCHAR2'
+,p_max_length=>50
+,p_selector_type=>'NAME'
+,p_selector=>'KATEGORIE'
+);
+wwv_flow_imp_shared.create_data_profile_col(
+ p_id=>wwv_flow_imp.id(24635756086356703)
+,p_data_profile_id=>wwv_flow_imp.id(24630612915356656)
+,p_name=>'STEUERRELEVANT'
+,p_sequence=>17
+,p_column_type=>'DATA'
+,p_data_type=>'VARCHAR2'
+,p_max_length=>4000
+,p_selector_type=>'NAME'
+,p_selector=>'STEUERRELEVANT'
+);
+wwv_flow_imp_shared.create_data_profile_col(
+ p_id=>wwv_flow_imp.id(24636013218356703)
+,p_data_profile_id=>wwv_flow_imp.id(24630612915356656)
+,p_name=>'GLAEUBIGER_ID'
+,p_sequence=>18
+,p_column_type=>'DATA'
+,p_data_type=>'VARCHAR2'
+,p_max_length=>50
+,p_selector_type=>'NAME'
+,p_selector=>'GLAEUBIGER_ID'
+);
+wwv_flow_imp_shared.create_data_profile_col(
+ p_id=>wwv_flow_imp.id(24636320797356703)
+,p_data_profile_id=>wwv_flow_imp.id(24630612915356656)
+,p_name=>'MANDATSREFERENZ'
+,p_sequence=>19
+,p_column_type=>'DATA'
+,p_data_type=>'VARCHAR2'
+,p_max_length=>50
+,p_selector_type=>'NAME'
+,p_selector=>'MANDATSREFERENZ'
+);
+wwv_flow_imp_shared.create_load_table(
+ p_id=>wwv_flow_imp.id(24636587983356703)
+,p_name=>'LADE_UMSAETZE'
+,p_static_id=>'lade_umsaetze'
+,p_target_type=>'TABLE'
+,p_table_name=>'KONTOUMSAETZE'
+,p_data_profile_id=>wwv_flow_imp.id(24630612915356656)
+,p_loading_method=>'APPEND'
+,p_commit_interval=>200
+,p_error_handling=>'ABORT'
+,p_skip_validation=>'N'
+,p_version_scn=>160458937
+);
+wwv_flow_imp.component_end;
+end;
+/
