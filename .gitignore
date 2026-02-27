@@ -8,3 +8,8 @@ desktop.ini
 
 # Ordner-Reste
 .DS_Store
+
+# administrative Scripte
+create_ts_ws_users.sql
+drop_ts_ws_users.sql
+Insert_hb.sql
