@@ -13,3 +13,6 @@ desktop.ini
 create_ts_ws_users.sql
 drop_ts_ws_users.sql
 Insert_hb.sql
+run_deployment.bat
+deploy.sql
+install_schema.sql
