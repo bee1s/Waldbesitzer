@@ -47,8 +47,8 @@ rem  Hinweis zu Git
 rem ==========================================
 rem echo ==========================================
 rem echo   Export abgeschlossen.
-rem echo   Jetzt bitte Git-Änderungen in VS Code
-rem echo   manuell prüfen (Source Control).
+rem echo   Jetzt bitte Git-Änderungen in Git_Bash
+rem echo   manuell prüfen (git status).
 rem echo ==========================================
 rem echo.
 pause
