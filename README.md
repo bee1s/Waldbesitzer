@@ -4,7 +4,7 @@ Dieses Repository enthält einen automatisierten Workflow für das Deployment ei
 
 
 
-🛠 Voraussetzungen
+#### 🛠 Voraussetzungen
 
 SQLcl (Version 21c oder neuer) auf der Quellmaschine.
 
@@ -22,11 +22,9 @@ Verwende Code mit Vorsicht.
 
 
 
-📂 Repository Struktur
+#### 📂 Repository Struktur
 
 /apex: Enthält den Split-Export der APEX-App (fxxx.sql zerlegt in Einzeldateien).
-
-C:\\Git\\WALDBESITZER\\apex\\app\_101\\scripts --> ***export\_and\_sync.bat***
 
 ***deploy.sql***: Das zentrale Master-Skript im Hauptverzeichnis.
 
@@ -36,7 +34,7 @@ C:\\Git\\WALDBESITZER\\apex\\app\_101\\scripts --> ***export\_and\_sync.bat***
 
 
 
-1\. Vorbereitung (Entwicklungsmaschine)
+#### 1\. Vorbereitung (Entwicklungsmaschine)
 
 Stelle sicher, dass alle Änderungen in Git eingecheckt sind. Exportiere die APEX-App mit SQLcl im Split-Format, um Code-Reviews zu ermöglichen:
 
@@ -44,13 +42,53 @@ apex export -applicationid 101 -split
 
 
 
-2\. Ausführung des Deployments
+##### 1.1 Export- Prozess mit PowerShell
+
+###### **--Powershell in Git- Projektverzeichnis starten (pwsh)**
+
+###### **--SQLcL Anmeldung**
+
+sql -thin user/lido@localhost:1521/XEPDB1
+
+
+
+###### **--Export starten**
+
+**---Projekt -->** HAUSHALTSBUCH
+
+apex export -applicationid 1206 -split -dir "C:\\Git\\HAUSHALTSBUCH\\apex\\app\_1206\\export"
+
+
+
+**---Projekt** **-->** WALDBESITZER
+
+apex export -applicationid 101 -split -dir "C:\\Git\\WALDBESITZER\\apex\\app\_101\\export"
+
+
+
+###### **--SQLcL Abmeldung**
+
+exit
+
+
+
+###### **--Export DB- Schema manuell über "Generate DDL" (APEX- Utilities)**
+
+\--Struktur (Dateinamen der Exportdateien):
+
+function.sql, procedures.sql, views.sql, packages.sql, sequences.sql, tables.sql, dblinks.sql
+
+
+
+
+
+#### 2\. Ausführung des Deployments
 
 Starte die run\_deployment.bat. Diese führt folgende Schritte auf dem Zielsystem aus:
 
 
 
-a. Schema-Installation (DDL)
+##### a. Schema-Installation (DDL)
 
 Nutzt PL/SQL-Wrapper (BEGIN EXECUTE IMMEDIATE ... EXCEPTION WHEN OTHERS THEN IF SQLCODE = -955 THEN NULL; ... END;).
 
@@ -58,7 +96,7 @@ Verhindert Fehler, wenn Tabellen oder Sequences bereits existieren.
 
 
 
-b. Daten-Synchronisation (DML)
+##### b. Daten-Synchronisation (DML)
 
 Deaktiviert alle Foreign Key Constraints (erlaubt Import in beliebiger Reihenfolge).
 
@@ -76,7 +114,7 @@ Reaktiviert alle Trigger.
 
 
 
-c. APEX-App Installation
+##### c. APEX-App Installation
 
 Setzt Workspace und Schema via apex\_application\_install.
 
@@ -86,7 +124,7 @@ Importiert die Applikation vollautomatisch.
 
 
 
-📝 Wichtige Hinweise \& Troubleshooting
+#### 📝 Wichtige Hinweise \& Troubleshooting
 
 Identity Spalten: Das Sync-Skript sucht standardmäßig nach der Spalte ID. Falls Primärschlüssel anders benannt sind, muss der PL/SQL-Block in der deploy.sql angepasst werden.
 
