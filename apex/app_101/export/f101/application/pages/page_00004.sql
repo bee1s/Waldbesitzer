@@ -31,8 +31,12 @@ wwv_flow_imp_page.create_page_plug(
 ,p_plug_display_sequence=>10
 ,p_query_type=>'TABLE'
 ,p_query_table=>'V_RECHNUNGEN_KOPF'
+,p_query_where=>'to_char(RECHNUNGSDATUM, ''YYYY'') = :P4_REJAHR'
+,p_query_order_by_type=>'STATIC'
+,p_query_order_by=>'ID DESC'
 ,p_include_rowid_column=>false
 ,p_plug_source_type=>'NATIVE_IR'
+,p_ajax_items_to_submit=>'P4_REJAHR'
 ,p_prn_content_disposition=>'ATTACHMENT'
 ,p_prn_units=>'MILLIMETERS'
 ,p_prn_paper_size=>'A4'
@@ -260,6 +264,21 @@ wwv_flow_imp_page.create_worksheet_rpt(
 ,p_is_default=>'Y'
 ,p_report_columns=>'ID:HOLZWERBER_ID:VORNAME:NACHNAME:PLZ:ORT:STRASSE:NR:RECHNUNGSDATUM:RECHNUNGSJAHR:ZAHLUNGSZIEL:ERSTELLT:ERSTELLT_VON:GEAENDERT:GEAENDERT_VON:'
 );
+wwv_flow_imp_page.create_page_plug(
+ p_id=>wwv_flow_imp.id(141853668744097520)
+,p_plug_name=>'Rechnungsjahr'
+,p_parent_plug_id=>wwv_flow_imp.id(20549899653139253)
+,p_region_css_classes=>'status_container'
+,p_region_template_options=>'#DEFAULT#'
+,p_plug_template=>2126429139436695430
+,p_plug_display_sequence=>20
+,p_plug_grid_column_span=>2
+,p_location=>null
+,p_ai_enabled=>false
+,p_attributes=>wwv_flow_t_plugin_attributes(wwv_flow_t_varchar2(
+  'expand_shortcuts', 'N',
+  'output_as', 'HTML')).to_clob
+);
 wwv_flow_imp_page.create_page_button(
  p_id=>wwv_flow_imp.id(20555158300139259)
 ,p_button_sequence=>10
@@ -272,6 +291,46 @@ wwv_flow_imp_page.create_page_button(
 ,p_button_image_alt=>'Create'
 ,p_button_position=>'RIGHT_OF_IR_SEARCH_BAR'
 ,p_button_redirect_url=>'f?p=&APP_ID.:5:&APP_SESSION.::&DEBUG.:5::'
+);
+wwv_flow_imp_page.create_page_item(
+ p_id=>wwv_flow_imp.id(141852528397097505)
+,p_name=>'P4_REJAHR'
+,p_item_sequence=>10
+,p_item_plug_id=>wwv_flow_imp.id(141853668744097520)
+,p_prompt=>'Rechnungsjahr:'
+,p_display_as=>'NATIVE_SELECT_LIST'
+,p_lov=>'SELECT DISTINCT TO_CHAR(RECHNUNGSDATUM, ''YYYY'') D, TO_CHAR(RECHNUNGSDATUM, ''YYYY'') R FROM V_RECHNUNG_ZAHLUNG_CHECK'
+,p_lov_display_null=>'YES'
+,p_lov_null_text=>'%'
+,p_cHeight=>1
+,p_field_template=>2318601014859922299
+,p_item_template_options=>'#DEFAULT#'
+,p_lov_display_extra=>'YES'
+,p_attributes=>wwv_flow_t_plugin_attributes(wwv_flow_t_varchar2(
+  'page_action_on_selection', 'NONE')).to_clob
+,p_ai_enabled=>false
+);
+wwv_flow_imp_page.create_page_da_event(
+ p_id=>wwv_flow_imp.id(119608075396019401)
+,p_name=>'Refresh'
+,p_event_sequence=>10
+,p_triggering_element_type=>'ITEM'
+,p_triggering_element=>'P4_REJAHR'
+,p_bind_type=>'bind'
+,p_execution_type=>'IMMEDIATE'
+,p_bind_event_type=>'change'
+);
+wwv_flow_imp_page.create_page_da_action(
+ p_id=>wwv_flow_imp.id(119608112028019402)
+,p_event_id=>wwv_flow_imp.id(119608075396019401)
+,p_event_result=>'TRUE'
+,p_action_sequence=>10
+,p_execute_on_page_init=>'N'
+,p_name=>'Refresh Report'
+,p_action=>'NATIVE_REFRESH'
+,p_affected_elements_type=>'REGION'
+,p_affected_region_id=>wwv_flow_imp.id(20549899653139253)
+,p_attribute_01=>'N'
 );
 wwv_flow_imp.component_end;
 end;

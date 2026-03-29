@@ -31,19 +31,20 @@ wwv_flow_imp_page.create_page_plug(
 ,p_plug_display_sequence=>10
 ,p_query_type=>'SQL'
 ,p_plug_source=>wwv_flow_string.join(wwv_flow_t_varchar2(
-'select ID,',
-'       ID RE_NUM, ',
-'       HOLZWERBER_ID,',
-'       RECHNUNGSDATUM,',
-'       ZAHLUNGSZIEL,',
-'       BETREFF,',
-'       RECHNUNGSTEXT,',
-'       RECHNUNGSUNTERTEXT,',
-'       ERSTELLT,',
-'       ERSTELLT_VON,',
-'       GEAENDERT,',
-'       GEAENDERT_VON',
-'  from RECHNUNGEN_KOPF'))
+'  select ID,',
+'         ID RE_NUM, ',
+'         HOLZWERBER_ID,',
+'         RECHNUNGSDATUM,',
+'         ZAHLUNGSZIEL,',
+'         BETREFF,',
+'         RECHNUNGSTEXT,',
+'         RECHNUNGSUNTERTEXT,',
+'         ERSTELLT,',
+'         ERSTELLT_VON,',
+'         GEAENDERT,',
+'         GEAENDERT_VON',
+'    from RECHNUNGEN_KOPF',
+'order by id'))
 ,p_is_editable=>true
 ,p_edit_operations=>'i:u:d'
 ,p_lost_update_check_type=>'VALUES'
@@ -212,7 +213,7 @@ wwv_flow_imp_page.create_region_column(
 ,p_data_type=>'VARCHAR2'
 ,p_is_query_only=>false
 ,p_item_type=>'NATIVE_TEXT_FIELD'
-,p_heading=>'Bezeichnung'
+,p_heading=>'Bezeichnung  der Position'
 ,p_heading_alignment=>'CENTER'
 ,p_display_sequence=>60
 ,p_value_alignment=>'LEFT'
@@ -277,7 +278,7 @@ wwv_flow_imp_page.create_region_column(
 ,p_is_query_only=>false
 ,p_item_type=>'NATIVE_DISPLAY_ONLY'
 ,p_heading=>'Erstellt'
-,p_heading_alignment=>'LEFT'
+,p_heading_alignment=>'CENTER'
 ,p_display_sequence=>80
 ,p_value_alignment=>'RIGHT'
 ,p_group_id=>wwv_flow_imp.id(20656590952025407)
@@ -309,7 +310,7 @@ wwv_flow_imp_page.create_region_column(
 ,p_is_query_only=>false
 ,p_item_type=>'NATIVE_DISPLAY_ONLY'
 ,p_heading=>'Erstellt Von'
-,p_heading_alignment=>'LEFT'
+,p_heading_alignment=>'CENTER'
 ,p_display_sequence=>90
 ,p_value_alignment=>'LEFT'
 ,p_group_id=>wwv_flow_imp.id(20656590952025407)
@@ -342,7 +343,7 @@ wwv_flow_imp_page.create_region_column(
 ,p_is_query_only=>false
 ,p_item_type=>'NATIVE_DISPLAY_ONLY'
 ,p_heading=>'Geaendert'
-,p_heading_alignment=>'LEFT'
+,p_heading_alignment=>'CENTER'
 ,p_display_sequence=>100
 ,p_value_alignment=>'RIGHT'
 ,p_group_id=>wwv_flow_imp.id(20656590952025407)
@@ -374,7 +375,7 @@ wwv_flow_imp_page.create_region_column(
 ,p_is_query_only=>false
 ,p_item_type=>'NATIVE_DISPLAY_ONLY'
 ,p_heading=>'Geaendert Von'
-,p_heading_alignment=>'LEFT'
+,p_heading_alignment=>'CENTER'
 ,p_display_sequence=>110
 ,p_value_alignment=>'LEFT'
 ,p_group_id=>wwv_flow_imp.id(20656590952025407)
@@ -412,7 +413,7 @@ wwv_flow_imp_page.create_interactive_grid(
 ,p_pagination_type=>'SCROLL'
 ,p_show_total_row_count=>true
 ,p_show_toolbar=>true
-,p_toolbar_buttons=>'SEARCH_COLUMN:SEARCH_FIELD:RESET'
+,p_toolbar_buttons=>'SEARCH_COLUMN:SEARCH_FIELD:ACTIONS_MENU:RESET'
 ,p_enable_save_public_report=>false
 ,p_enable_subscriptions=>true
 ,p_enable_flashback=>true
@@ -448,7 +449,7 @@ wwv_flow_imp_page.create_ig_report_column(
 ,p_column_id=>wwv_flow_imp.id(20557455276139629)
 ,p_is_visible=>true
 ,p_is_frozen=>true
-,p_width=>40.5
+,p_width=>40
 );
 wwv_flow_imp_page.create_ig_report_column(
  p_id=>wwv_flow_imp.id(20558874539139631)
@@ -473,7 +474,7 @@ wwv_flow_imp_page.create_ig_report_column(
 ,p_column_id=>wwv_flow_imp.id(20560454639139632)
 ,p_is_visible=>true
 ,p_is_frozen=>false
-,p_width=>473
+,p_width=>348
 ,p_sort_order=>1
 ,p_sort_direction=>'ASC'
 ,p_sort_nulls=>'LAST'
@@ -483,7 +484,7 @@ wwv_flow_imp_page.create_ig_report_column(
 ,p_view_id=>wwv_flow_imp.id(20556774882139628)
 ,p_display_seq=>5
 ,p_column_id=>wwv_flow_imp.id(20561487634139634)
-,p_is_visible=>false
+,p_is_visible=>true
 ,p_is_frozen=>false
 ,p_width=>139
 );
@@ -494,7 +495,7 @@ wwv_flow_imp_page.create_ig_report_column(
 ,p_column_id=>wwv_flow_imp.id(20562487311139634)
 ,p_is_visible=>true
 ,p_is_frozen=>false
-,p_width=>92
+,p_width=>256.016
 );
 wwv_flow_imp_page.create_ig_report_column(
  p_id=>wwv_flow_imp.id(20563856783139635)
@@ -512,7 +513,7 @@ wwv_flow_imp_page.create_ig_report_column(
 ,p_column_id=>wwv_flow_imp.id(20564457179139635)
 ,p_is_visible=>true
 ,p_is_frozen=>false
-,p_width=>217
+,p_width=>98
 );
 wwv_flow_imp_page.create_ig_report_column(
  p_id=>wwv_flow_imp.id(20565850284139635)
@@ -521,7 +522,7 @@ wwv_flow_imp_page.create_ig_report_column(
 ,p_column_id=>wwv_flow_imp.id(20565452625139635)
 ,p_is_visible=>true
 ,p_is_frozen=>false
-,p_width=>137.5
+,p_width=>137
 );
 wwv_flow_imp_page.create_ig_report_column(
  p_id=>wwv_flow_imp.id(20566876752139637)
@@ -530,7 +531,7 @@ wwv_flow_imp_page.create_ig_report_column(
 ,p_column_id=>wwv_flow_imp.id(20566447438139637)
 ,p_is_visible=>true
 ,p_is_frozen=>false
-,p_width=>126
+,p_width=>150
 );
 wwv_flow_imp_page.create_page_button(
  p_id=>wwv_flow_imp.id(20545799034139245)
@@ -716,7 +717,7 @@ wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(20535223919139231)
 ,p_name=>'P5_HOLZWERBER_ID'
 ,p_source_data_type=>'NUMBER'
-,p_item_sequence=>60
+,p_item_sequence=>70
 ,p_item_plug_id=>wwv_flow_imp.id(20533610217139223)
 ,p_item_source_plug_id=>wwv_flow_imp.id(20533610217139223)
 ,p_prompt=>'Holzwerber Id'
@@ -751,7 +752,7 @@ wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(20535658142139234)
 ,p_name=>'P5_RECHNUNGSDATUM'
 ,p_source_data_type=>'TIMESTAMP'
-,p_item_sequence=>70
+,p_item_sequence=>80
 ,p_item_plug_id=>wwv_flow_imp.id(20533610217139223)
 ,p_item_source_plug_id=>wwv_flow_imp.id(20533610217139223)
 ,p_prompt=>'Rechnungsdatum'
@@ -777,7 +778,7 @@ wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(20536420721139235)
 ,p_name=>'P5_ZAHLUNGSZIEL'
 ,p_source_data_type=>'NUMBER'
-,p_item_sequence=>80
+,p_item_sequence=>90
 ,p_item_plug_id=>wwv_flow_imp.id(20533610217139223)
 ,p_item_source_plug_id=>wwv_flow_imp.id(20533610217139223)
 ,p_prompt=>'Zahlungsziel'
@@ -799,7 +800,7 @@ wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(20536874123139235)
 ,p_name=>'P5_BETREFF'
 ,p_source_data_type=>'VARCHAR2'
-,p_item_sequence=>90
+,p_item_sequence=>100
 ,p_item_plug_id=>wwv_flow_imp.id(20533610217139223)
 ,p_item_source_plug_id=>wwv_flow_imp.id(20533610217139223)
 ,p_prompt=>'Betreff'
@@ -822,7 +823,7 @@ wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(20537259352139235)
 ,p_name=>'P5_RECHNUNGSTEXT'
 ,p_source_data_type=>'VARCHAR2'
-,p_item_sequence=>100
+,p_item_sequence=>110
 ,p_item_plug_id=>wwv_flow_imp.id(20533610217139223)
 ,p_item_source_plug_id=>wwv_flow_imp.id(20533610217139223)
 ,p_prompt=>'Rechnungstext'
@@ -845,7 +846,7 @@ wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(20537675074139237)
 ,p_name=>'P5_RECHNUNGSUNTERTEXT'
 ,p_source_data_type=>'VARCHAR2'
-,p_item_sequence=>110
+,p_item_sequence=>120
 ,p_item_plug_id=>wwv_flow_imp.id(20533610217139223)
 ,p_item_source_plug_id=>wwv_flow_imp.id(20533610217139223)
 ,p_prompt=>'Rechnungsuntertext'
@@ -870,7 +871,7 @@ wwv_flow_imp_page.create_page_item(
 ,p_name=>'P5_ERSTELLT'
 ,p_source_data_type=>'TIMESTAMP'
 ,p_is_query_only=>true
-,p_item_sequence=>120
+,p_item_sequence=>130
 ,p_item_plug_id=>wwv_flow_imp.id(20533610217139223)
 ,p_item_source_plug_id=>wwv_flow_imp.id(20533610217139223)
 ,p_prompt=>'Erstellt'
@@ -892,7 +893,7 @@ wwv_flow_imp_page.create_page_item(
 ,p_name=>'P5_ERSTELLT_VON'
 ,p_source_data_type=>'VARCHAR2'
 ,p_is_query_only=>true
-,p_item_sequence=>130
+,p_item_sequence=>140
 ,p_item_plug_id=>wwv_flow_imp.id(20533610217139223)
 ,p_item_source_plug_id=>wwv_flow_imp.id(20533610217139223)
 ,p_prompt=>'Erstellt Von'
@@ -914,7 +915,7 @@ wwv_flow_imp_page.create_page_item(
 ,p_name=>'P5_GEAENDERT'
 ,p_source_data_type=>'TIMESTAMP'
 ,p_is_query_only=>true
-,p_item_sequence=>140
+,p_item_sequence=>150
 ,p_item_plug_id=>wwv_flow_imp.id(20533610217139223)
 ,p_item_source_plug_id=>wwv_flow_imp.id(20533610217139223)
 ,p_prompt=>'Geaendert'
@@ -937,7 +938,7 @@ wwv_flow_imp_page.create_page_item(
 ,p_name=>'P5_GEAENDERT_VON'
 ,p_source_data_type=>'VARCHAR2'
 ,p_is_query_only=>true
-,p_item_sequence=>150
+,p_item_sequence=>160
 ,p_item_plug_id=>wwv_flow_imp.id(20533610217139223)
 ,p_item_source_plug_id=>wwv_flow_imp.id(20533610217139223)
 ,p_prompt=>'Geaendert Von'
@@ -957,7 +958,7 @@ wwv_flow_imp_page.create_page_item(
 wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(20544448356139243)
 ,p_name=>'P5_ID_COUNT'
-,p_item_sequence=>160
+,p_item_sequence=>170
 ,p_item_plug_id=>wwv_flow_imp.id(20533610217139223)
 ,p_display_as=>'NATIVE_DISPLAY_ONLY'
 ,p_tag_attributes=>'class="fielddata"'
@@ -978,6 +979,26 @@ wwv_flow_imp_page.create_page_item(
 ,p_display_as=>'NATIVE_DISPLAY_ONLY'
 ,p_colspan=>1
 ,p_field_template=>1609121967514267634
+,p_item_template_options=>'#DEFAULT#'
+,p_attributes=>wwv_flow_t_plugin_attributes(wwv_flow_t_varchar2(
+  'based_on', 'VALUE',
+  'format', 'PLAIN',
+  'send_on_page_submit', 'Y',
+  'show_line_breaks', 'Y')).to_clob
+);
+wwv_flow_imp_page.create_page_item(
+ p_id=>wwv_flow_imp.id(100062809510126405)
+,p_name=>'P5_HOLZWERBER_ANZEIGE'
+,p_item_sequence=>60
+,p_item_plug_id=>wwv_flow_imp.id(20533610217139223)
+,p_use_cache_before_default=>'NO'
+,p_source=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'select vorname || '' '' || nachname || '' '' || (select plz || '' '' || ort || '' '' || ortsteil from postleitzahlen where id = plz_id )',
+'    from holzwerber where id = :P5_HOLZWERBER_ID'))
+,p_source_type=>'QUERY'
+,p_display_as=>'NATIVE_DISPLAY_ONLY'
+,p_begin_on_new_line=>'N'
+,p_field_template=>3031561666792084173
 ,p_item_template_options=>'#DEFAULT#'
 ,p_attributes=>wwv_flow_t_plugin_attributes(wwv_flow_t_varchar2(
   'based_on', 'VALUE',

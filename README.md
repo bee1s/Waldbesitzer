@@ -30,7 +30,7 @@ C:\\Git\\WALDBESITZER\\apex\\app\_101\\scripts --> ***export\_and\_sync.bat***
 
 ***deploy.sql***: Das zentrale Master-Skript im Hauptverzeichnis.
 
-***run\_deployment.bat***: Windows-Batch zum Starten des Prozesses.
+***run\_deployment.bat***: Windows-Batch zum Starten des Prozesses im Verzeichnis "C:\\Git\\WALDBESITZER\\scripts".
 
 🚀 Deployment-Schritte
 
@@ -62,6 +62,8 @@ b. Daten-Synchronisation (DML)
 
 Deaktiviert alle Foreign Key Constraints (erlaubt Import in beliebiger Reihenfolge).
 
+Deaktiviert alle Trigger um zu verhindern das Originaldaten, Zeitstempel etc. überschrieben werden.
+
 Führt einen TRUNCATE ... DROP STORAGE auf alle Tabellen aus.
 
 Zieht Daten via INSERT INTO ... SELECT \* FROM ...@minipc\_link.
@@ -69,6 +71,8 @@ Zieht Daten via INSERT INTO ... SELECT \* FROM ...@minipc\_link.
 Korrigiert Identity Columns (MODIFY ID RESTART START WITH ...), damit APEX-Sequenzen synchron bleiben.
 
 Reaktiviert alle Constraints.
+
+Reaktiviert alle Trigger.
 
 
 

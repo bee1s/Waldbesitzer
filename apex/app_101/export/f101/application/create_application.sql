@@ -15,7 +15,7 @@ wwv_imp_workspace.create_flow(
  p_id=>wwv_flow.g_flow_id
 ,p_owner=>nvl(wwv_flow_application_install.get_schema,'WG')
 ,p_name=>nvl(wwv_flow_application_install.get_application_name,'WG')
-,p_alias=>nvl(wwv_flow_application_install.get_application_alias,'WG')
+,p_alias=>nvl(wwv_flow_application_install.get_application_alias,'WALDBESITZER_NB')
 ,p_page_view_logging=>'YES'
 ,p_page_protection_enabled_y_n=>'Y'
 ,p_checksum_salt=>'BE8B8C6BA049DBB1FD00ED1C5031E2A6166ED16E37212C42680B92A9C4A05A35'
@@ -49,7 +49,7 @@ wwv_imp_workspace.create_flow(
 ,p_substitution_value_01=>'WG'
 ,p_file_prefix => nvl(wwv_flow_application_install.get_static_app_file_prefix,'')
 ,p_files_version=>204
-,p_version_scn=>1205579049
+,p_version_scn=>1440509387
 ,p_print_server_type=>'NATIVE'
 ,p_file_storage=>'DB'
 ,p_is_pwa=>'Y'

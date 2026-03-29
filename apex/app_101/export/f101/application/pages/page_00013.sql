@@ -79,16 +79,15 @@ wwv_flow_imp_page.create_page_process(
 ,p_process_type=>'NATIVE_PLSQL'
 ,p_process_name=>'Kassenbuch Druck'
 ,p_process_sql_clob=>wwv_flow_string.join(wwv_flow_t_varchar2(
-'declare',
-'  l_additional_parameters varchar2(32767);',
-'begin',
+'DECLARE',
+'  l_additional_parameters   varchar2(32767);',
+'  l_error_msg                varchar2(32767);',
+'BEGIN',
 '  xlib_jasperreports.set_report_url(''http://localhost:8888/jri/report'');',
 '',
 '--  Merge parameters in l_additional_parameters variable',
-'  --l_additional_parameters := ''VONDAT='' || apex_util.url_encode(TO_CHAR(:P11_VONDAT, ''YYYY-MM-DD''));',
-'  --l_additional_parameters := l_additional_parameters || ''&BISDAT='' || apex_util.url_encode(TO_CHAR(:P11_BISDAT, ''YYYY-MM-DD''));',
 '  l_additional_parameters := ''BUCHJAHR='' || apex_util.url_encode(:P13_BUCHJAHR);',
-'  --l_additional_parameters := l_additional_parameters || ''&BUCHUNGSJAHR='' || apex_util.url_encode(:P13_BUCHJAHR);',
+'',
 '',
 '',
 '',
@@ -100,7 +99,20 @@ wwv_flow_imp_page.create_page_process(
 '                                  p_additional_params => l_additional_parameters);',
 '  apex_application.g_unrecoverable_error := true;',
 '',
-'end;'))
+'-- APEX stoppt hier normalerweise automatisch nach der Ausgabe des Blobs.',
+'-- Wenn ein Fehler auftritt, landet er in der EXCEPTION.',
+'',
+'EXCEPTION',
+'  WHEN OTHERS THEN',
+'    -- Hier fangen wir Jasper-spezifische Fehler ab',
+'    l_error_msg := SQLERRM;',
+'    ',
+'    -- Benutzerfreundliche Meldung in APEX ausgeben',
+'    apex_error.add_error (',
+'      p_message          => ''JasperReports-Fehler: '' || l_error_msg,',
+'      p_display_location => apex_error.c_inline_in_notification',
+'    );',
+'END;'))
 ,p_process_clob_language=>'PLSQL'
 ,p_error_display_location=>'INLINE_IN_NOTIFICATION'
 ,p_internal_uid=>25412914245088011
