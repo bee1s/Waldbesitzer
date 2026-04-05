@@ -16,6 +16,7 @@ wwv_flow_imp_page.create_page(
 ,p_name=>'UMSAETZE REPORT'
 ,p_alias=>'UMSAETZE-REPORT'
 ,p_step_title=>'UMSAETZE REPORT'
+,p_reload_on_submit=>'A'
 ,p_autocomplete_on_off=>'OFF'
 ,p_group_id=>wwv_flow_imp.id(33608279908063615)
 ,p_step_template=>2526643373347724467
@@ -199,8 +200,21 @@ wwv_flow_imp_page.create_page_plug(
   'show_line_breaks', 'Y')).to_clob
 );
 wwv_flow_imp_page.create_page_button(
- p_id=>wwv_flow_imp.id(24658040124558268)
+ p_id=>wwv_flow_imp.id(119608275147019403)
 ,p_button_sequence=>10
+,p_button_plug_id=>wwv_flow_imp.id(24657568212558265)
+,p_button_name=>'PDF'
+,p_button_action=>'SUBMIT'
+,p_button_template_options=>'#DEFAULT#:t-Button--iconLeft'
+,p_button_template_id=>2082829544945815391
+,p_button_is_hot=>'Y'
+,p_button_image_alt=>'<span> Einnahmen / Ausgaben </span>'
+,p_button_position=>'NEXT'
+,p_icon_css_classes=>'fa-file-pdf-o'
+);
+wwv_flow_imp_page.create_page_button(
+ p_id=>wwv_flow_imp.id(24658040124558268)
+,p_button_sequence=>20
 ,p_button_plug_id=>wwv_flow_imp.id(24657568212558265)
 ,p_button_name=>'RESET'
 ,p_button_action=>'REDIRECT_PAGE'
@@ -304,6 +318,48 @@ wwv_flow_imp_page.create_page_item(
 ,p_fc_initial_chart=>false
 ,p_fc_actions_filter=>true
 ,p_fc_display_as=>'INLINE'
+);
+wwv_flow_imp_page.create_page_process(
+ p_id=>wwv_flow_imp.id(119608395589019404)
+,p_process_sequence=>10
+,p_process_point=>'AFTER_SUBMIT'
+,p_process_type=>'NATIVE_PLSQL'
+,p_process_name=>'Einnahmen_Ausgabe Druck'
+,p_process_sql_clob=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'DECLARE',
+'  l_additional_parameters   varchar2(32767);',
+'  l_error_msg                varchar2(32767);',
+'BEGIN',
+'  xlib_jasperreports.set_report_url(''http://localhost:8888/jri/report'');',
+'',
+'',
+'',
+'  xlib_jasperreports.show_report (p_rep_name => ''einahmen_ausgaben'',',
+'                                  p_rep_format => ''pdf'',',
+'                                  p_data_source => ''default'',',
+'                                  p_rep_locale => ''de-DE'',',
+'                                  p_out_filename => ''ein_ausgaben.PDF'',',
+'                                  p_additional_params => l_additional_parameters);',
+'  apex_application.g_unrecoverable_error := true;',
+'',
+'-- APEX stoppt hier normalerweise automatisch nach der Ausgabe des Blobs.',
+'-- Wenn ein Fehler auftritt, landet er in der EXCEPTION.',
+'',
+'EXCEPTION',
+'  WHEN OTHERS THEN',
+'    -- Hier fangen wir Jasper-spezifische Fehler ab',
+'    l_error_msg := SQLERRM;',
+'    ',
+'    -- Benutzerfreundliche Meldung in APEX ausgeben',
+'    apex_error.add_error (',
+'      p_message          => ''JasperReports-Fehler: '' || l_error_msg,',
+'      p_display_location => apex_error.c_inline_in_notification',
+'    );',
+'END;'))
+,p_process_clob_language=>'PLSQL'
+,p_error_display_location=>'INLINE_IN_NOTIFICATION'
+,p_process_when_button_id=>wwv_flow_imp.id(119608275147019403)
+,p_internal_uid=>119608395589019404
 );
 wwv_flow_imp.component_end;
 end;
